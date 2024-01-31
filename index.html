@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="icon" href="img/favicon.png">
+</head>
+
+<body class="body">
+    <header>
+        <nav>
+            <div class="encabezado-izquierdo">
+                <a href="index.html"><img class="logoP" src="img/icono.png" alt="logo del encriptador"></a>
+                <span class="tituloInicial">Encriptador Alura</span>
+            </div>
+            <div class="encabezado-derecho">
+                <a class="redes" href="https://github.com/Jsnrivera" target="_blank"><img src="img/git.png"
+                        alt="perfil-github"></a>
+                <a class="redes" href="https://github.com/Jsnrivera/Encriptador" target="_blank"><img
+                        src="img/stars.png" alt="stars-github"></a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="lado-izquierdo">
+        <div class="textIz">
+            <textarea class="texto-a-encriptar" oninput="this.value = this.value.toLowerCase()"
+                placeholder="Escribe para encriptar y desencriptar" type="text" name="" id="usuario-texto"></textarea>
+        </div>
+        <div>
+            <p class="alerta-mensaje" id="alertaMensaje"><img class="alert-img" src="img/alert.gif" alt="alerta">
+                Sin carecteres especiales</p>
+
+        </div>
+        <div class="lugar-botones">
+            <button class="boton1" id="TextoAEncriptar" onclick="encriptarTexto();">Encriptar</button>
+            <button class="boton2" id="TextoADesencriptar" onclick="desencriptarTexto()">Desencriptar</button>
+        </div>
+    </div>
+    <div class="lado-derecho" ;">
+        <textarea readonly class="resultadoTexto" placeholder="Esperando tu Mensaje..." id="resultadoTexto" cols="30"
+            rows="10"></textarea>
+        <div>
+            <button type="button" class="clipboard" onclick="portapapeles()">Copiar Texto</button>
+        </div>
+    </div>
+    <script src=" app.js">
+    </script>
+</body>
+<footer>
+    <section class="footer">
+        <a href="https://github.com/Jsnrivera" target="_blank"><img src="img/git.png" alt="perfil-github"></a>
+        <a href="https://github.com/Jsnrivera/Encriptador" target="_blank"><img src="img/stars.png"
+                alt="stars-github"></a>
+    </section>
+
+</footer>
+
+</html>
