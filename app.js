@@ -10,21 +10,33 @@ function encrypt() {
         alertMes.style.color = "red";
         setTimeout(function () { alertMes.style.color = ""; }, 900);
     } else {
-        textAreaEntrada.value = "El texto se ha encriptado.";
-        textAreaEntrada.style.color = "black";
-        setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
-        textoUsuario = textoUsuario.replace(/e/g, "enter")
-            .replace(/i/g, "imes")
-            .replace(/a/g, "ai")
-            .replace(/o/g, "ober")
-            .replace(/u/g, "ufat");
-        textAreaResultado.innerHTML = textoUsuario;
+        if (textAreaEntrada.value === "") {
+            textAreaEntrada.value = "No hay texto para encriptar.";
+            textAreaEntrada.style.color = "red";
+            setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+        }
+        else {
+            textAreaEntrada.value = "El texto se ha encriptado.";
+            textAreaEntrada.style.color = "black";
+            setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+            textoUsuario = textoUsuario.replace(/e/g, "enter")
+                .replace(/i/g, "imes")
+                .replace(/a/g, "ai")
+                .replace(/o/g, "ober")
+                .replace(/u/g, "ufat");
+            textAreaResultado.innerHTML = textoUsuario;
+        }
     }
 }
 //desencripta el texto ingresado por el usuario
 function decrypt() {
     if (textAreaEntrada.value === "") {
         let textoEncriptado = textAreaResultado.value;
+        if (textoEncriptado === "") {
+            textAreaEntrada.value = "No hay texto para desencriptar.";
+            textAreaEntrada.style.color = "red";
+            setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+        }
         textoEncriptado = textoEncriptado.replace(/enter/g, "e")
             .replace(/imes/g, "i")
             .replace(/ai/g, "a")
@@ -50,5 +62,5 @@ function copiarTexto() {
     navigator.clipboard.writeText(codigoACopiar).valueOf(Text);
     document.getElementById('resultadoTexto').textContent = "Texto copiado al portapapeles.";
     textAreaResultado.style.color = "black";
-    setTimeout(function () { ; textAreaResultado.textContent = "" }, 2000);
+    setTimeout(function () { ; textAreaResultado.textContent = "" }, 1000);
 }
