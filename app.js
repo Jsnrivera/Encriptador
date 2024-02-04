@@ -1,5 +1,4 @@
 function textoEncriptado(textoUsuario) {
-    //convierte todo el texto en minusculas
     textoUsuario = textoUsuario.replace(/[^\w\s]/gi, '');
     if (textoUsuario !== document.getElementById("usuario-texto").value) {
         let colorTex = document.getElementById("alertaMensaje");
@@ -21,7 +20,6 @@ function textoEncriptado(textoUsuario) {
 }
 
 function textoDesencriptado(textoEncriptado) {
-    //convierte todo el texto en minusculas
     return textoEncriptado.replace(/enter/g, "e")
         .replace(/imes/g, "i")
         .replace(/ai/g, "a")
