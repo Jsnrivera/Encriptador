@@ -1,52 +1,54 @@
-function textoEncriptado(textoUsuario) {
-    textoUsuario = textoUsuario.replace(/[^\w\s]/gi, '');
-    if (textoUsuario !== document.getElementById("usuario-texto").value) {
-        let colorTex = document.getElementById("alertaMensaje");
-        colorTex.style.color = "red";
-        setTimeout(function () { colorTex.style.color = ""; }, 2000);
-        return document.getElementById("usuario-texto").value = "";
-    }
-    else {
-        let color = document.getElementById("usuario-texto");
-        document.getElementById("usuario-texto").value = "El texto se ha encriptado.";
-        color.style.color = "black";
-        setTimeout(function () { document.getElementById("usuario-texto").value = "", color.style.color = ""; }, 2000);
-        return textoUsuario.replace(/e/g, "enter")
+//variables globales
+var alertMes = document.getElementById("alertaMensaje");
+var textAreaEntrada = document.getElementById("usuario-texto");
+var textAreaResultado = document.getElementById("resultadoTexto");
+//encripta el texto ingresado por el usuario
+function encrypt() {
+    let textoUsuario = textAreaEntrada.value;
+    let caracteresNo = textoUsuario.replace(/[^\w\s]/gi, '');
+    if (caracteresNo !== textoUsuario) {
+        alertMes.style.color = "red";
+        setTimeout(function () { alertMes.style.color = ""; }, 900);
+    } else {
+        textAreaEntrada.value = "El texto se ha encriptado.";
+        textAreaEntrada.style.color = "black";
+        setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+        textoUsuario = textoUsuario.replace(/e/g, "enter")
             .replace(/i/g, "imes")
             .replace(/a/g, "ai")
             .replace(/o/g, "ober")
             .replace(/u/g, "ufat");
+        textAreaResultado.innerHTML = textoUsuario;
     }
 }
-
-function textoDesencriptado(textoEncriptado) {
-    return textoEncriptado.replace(/enter/g, "e")
-        .replace(/imes/g, "i")
-        .replace(/ai/g, "a")
-        .replace(/ober/g, "o")
-        .replace(/ufat/g, "u");
+//desencripta el texto ingresado por el usuario
+function decrypt() {
+    if (textAreaEntrada.value === "") {
+        let textoEncriptado = textAreaResultado.value;
+        textoEncriptado = textoEncriptado.replace(/enter/g, "e")
+            .replace(/imes/g, "i")
+            .replace(/ai/g, "a")
+            .replace(/ober/g, "o")
+            .replace(/ufat/g, "u");
+        textAreaResultado.innerHTML = textoEncriptado;
+    } else {
+        let textoUsuario = textAreaEntrada.value;
+        textoUsuario = textoUsuario.replace(/enter/g, "e")
+            .replace(/imes/g, "i")
+            .replace(/ai/g, "a")
+            .replace(/ober/g, "o")
+            .replace(/ufat/g, "u");
+        textAreaResultado.innerHTML = textoUsuario;
+        textAreaEntrada.value = "El texto se ha desencriptado.";
+        textAreaEntrada.style.color = "black";
+        setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+    }
 }
-
-function encriptarTexto() {
-    let textoUsuario = document.getElementById("usuario-texto").value;
-    document.getElementById("resultadoTexto").innerHTML = textoEncriptado(textoUsuario);
-}
-
-
-function desencriptarTexto() {
-
-    let textoEncriptado = document.getElementById("usuario-texto").value;
-    document.getElementById("resultadoTexto").innerHTML = textoDesencriptado(textoEncriptado);
-    document.getElementById("usuario-texto").value = "";
-    //let textoUsuario = document.getElementById("usuario-texto");
-    //document.getElementById("usuario-texto").innerHTML = textoEncriptado(textoUsuario);
-}
-function portapapeles() {
-    let codigoACopiar = document.getElementById('resultadoTexto').value;
+//copia el texto al portapapeles
+function copiarTexto() {
+    let codigoACopiar = textAreaResultado.value;
     navigator.clipboard.writeText(codigoACopiar).valueOf(Text);
-    let color = document.getElementById("resultadoTexto");
     document.getElementById('resultadoTexto').textContent = "Texto copiado al portapapeles.";
-    color.style.color = "black";
-    setTimeout(function () { ; document.getElementById('resultadoTexto').textContent = "" }, 2000);
+    textAreaResultado.style.color = "black";
+    setTimeout(function () { ; textAreaResultado.textContent = "" }, 2000);
 }
-
