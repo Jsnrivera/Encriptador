@@ -45,15 +45,21 @@ function decrypt() {
         textAreaResultado.innerHTML = textoEncriptado;
     } else {
         let textoUsuario = textAreaEntrada.value;
-        textoUsuario = textoUsuario.replace(/enter/g, "e")
-            .replace(/imes/g, "i")
-            .replace(/ai/g, "a")
-            .replace(/ober/g, "o")
-            .replace(/ufat/g, "u");
-        textAreaResultado.innerHTML = textoUsuario;
-        textAreaEntrada.value = "El texto se ha desencriptado.";
-        textAreaEntrada.style.color = "black";
-        setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+        let caracteresNo = textoUsuario.replace(/[^\w\s]/gi, '');
+        if (caracteresNo !== textoUsuario) {
+            alertMes.style.color = "red";
+            setTimeout(function () { alertMes.style.color = ""; }, 900);
+        } else {
+            textoUsuario = textoUsuario.replace(/enter/g, "e")
+                .replace(/imes/g, "i")
+                .replace(/ai/g, "a")
+                .replace(/ober/g, "o")
+                .replace(/ufat/g, "u");
+            textAreaResultado.innerHTML = textoUsuario;
+            textAreaEntrada.value = "El texto se ha desencriptado.";
+            textAreaEntrada.style.color = "black";
+            setTimeout(function () { textAreaEntrada.value = "", textAreaEntrada.style.color = ""; }, 900);
+        }
     }
 }
 //copia el texto al portapapeles
