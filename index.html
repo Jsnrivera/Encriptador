@@ -37,15 +37,15 @@
 
         </div>
         <div class="lugar-botones">
-            <button class="boton1" id="TextoAEncriptar" onclick="encriptarTexto();">Encriptar</button>
-            <button class="boton2" id="TextoADesencriptar" onclick="desencriptarTexto()">Desencriptar</button>
+            <button class="boton1" id="TextoAEncriptar" onclick="encrypt();">Encriptar</button>
+            <button class="boton2" id="TextoADesencriptar" onclick="decrypt()">Desencriptar</button>
         </div>
     </div>
     <div class="lado-derecho" ;">
         <textarea readonly class="resultadoTexto" placeholder="Esperando tu Mensaje..." id="resultadoTexto" cols="30"
             rows="10"></textarea>
         <div>
-            <button type="button" class="clipboard" onclick="portapapeles()">Copiar Texto</button>
+            <button type="button" class="clipboard" onclick="copiarTexto()">Copiar Texto</button>
         </div>
     </div>
     <script src=" app.js">
